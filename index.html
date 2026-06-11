@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Klinik Pratama Sehat Keluarga</title>
+
+<style>
+:root{
+    --primary:#0f4c81;
+    --secondary:#1e88e5;
+    --light:#f5f8fc;
+    --white:#ffffff;
+    --dark:#2d3748;
+    --success:#25D366;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:var(--light);
+    color:var(--dark);
+    line-height:1.6;
+}
+
+header{
+    background:linear-gradient(rgba(15,76,129,0.85),rgba(15,76,129,0.85)),
+    url('https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1600');
+    background-size:cover;
+    background-position:center;
+    color:white;
+    min-height:85vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:20px;
+}
+
+.hero h1{
+    font-size:3rem;
+    margin-bottom:15px;
+}
+
+.hero p{
+    max-width:700px;
+    margin:auto;
+    font-size:1.2rem;
+}
+
+.hero-buttons{
+    margin-top:25px;
+}
+
+.btn{
+    display:inline-block;
+    padding:14px 28px;
+    margin:5px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.btn-primary{
+    background:white;
+    color:var(--primary);
+}
+
+.btn-wa{
+    background:var(--success);
+    color:white;
+}
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:white;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+nav li a{
+    display:block;
+    padding:18px 20px;
+    text-decoration:none;
+    color:var(--dark);
+    font-weight:600;
+}
+
+section{
+    max-width:1200px;
+    margin:auto;
+    padding:70px 20px;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.section-title h2{
+    color:var(--primary);
+    margin-bottom:10px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:white;
+    border-radius:12px;
+    padding:25px;
+    box-shadow:0 3px 15px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.card h3{
+    color:var(--primary);
+    margin-bottom:10px;
+}
+
+.info-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+}
+
+.box{
+    background:white;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 3px 15px rgba(0,0,0,.08);
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+table th{
+    background:var(--primary);
+    color:white;
+}
+
+table th, table td{
+    border:1px solid #ddd;
+    padding:12px;
+    text-align:center;
+}
+
+.contact-item{
+    margin-bottom:15px;
+}
+
+footer{
+    background:var(--primary);
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+.badges{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:15px;
+    margin-top:25px;
+}
+
+.badge{
+    background:white;
+    color:var(--primary);
+    padding:12px 18px;
+    border-radius:30px;
+    font-weight:600;
+}
+
+@media(max-width:768px){
+
+.hero h1{
+    font-size:2rem;
+}
+
+.info-grid{
+    grid-template-columns:1fr;
+}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="hero">
+    <h1>Klinik Pratama Sehat Keluarga</h1>
+    <p>
+        Pelayanan kesehatan profesional, cepat, dan terpercaya
+        untuk seluruh anggota keluarga.
+    </p>
+
+    <div class="hero-buttons">
+        <a href="#kontak" class="btn btn-primary">Hubungi Kami</a>
+        <a href="https://wa.me/6281234567890" class="btn btn-wa">
+            Daftar via WhatsApp
+        </a>
+    </div>
+
+    <div class="badges">
+        <div class="badge">Dokter Umum</div>
+        <div class="badge">Laboratorium</div>
+        <div class="badge">Medical Check Up</div>
+        <div class="badge">Imunisasi</div>
+    </div>
+</div>
+</header>
+
+<nav>
+<ul>
+<li><a href="#tentang">Tentang</a></li>
+<li><a href="#layanan">Layanan</a></li>
+<li><a href="#jadwal">Jadwal</a></li>
+<li><a href="#kontak">Kontak</a></li>
+</ul>
+</nav>
+
+<section id="tentang">
+<div class="section-title">
+<h2>Tentang Klinik</h2>
+<p>Kesehatan keluarga adalah prioritas kami.</p>
+</div>
+
+<div class="box">
+<p>
+Klinik Pratama Sehat Keluarga menyediakan pelayanan kesehatan primer
+yang komprehensif meliputi konsultasi dokter umum, pemeriksaan
+laboratorium, tindakan medis sederhana, imunisasi, serta medical check up.
+Dengan tenaga kesehatan profesional dan fasilitas yang memadai,
+kami berkomitmen memberikan pelayanan yang cepat, aman, dan berkualitas.
+</p>
+</div>
+</section>
+
+<section id="layanan">
+
+<div class="section-title">
+<h2>Layanan Kami</h2>
+</div>
+
+<div class="cards">
+
+<div class="card">
+<h3>Dokter Umum</h3>
+<p>Pemeriksaan dan pengobatan penyakit umum untuk dewasa dan anak.</p>
+</div>
+
+<div class="card">
+<h3>Medical Check Up</h3>
+<p>Pemeriksaan kesehatan berkala untuk individu maupun perusahaan.</p>
+</div>
+
+<div class="card">
+<h3>Laboratorium</h3>
+<p>Pemeriksaan darah, gula darah, kolesterol, asam urat dan lainnya.</p>
+</div>
+
+<div class="card">
+<h3>Imunisasi</h3>
+<p>Pelayanan imunisasi anak dan dewasa sesuai rekomendasi.</p>
+</div>
+
+<div class="card">
+<h3>Tindakan Medis</h3>
+<p>Perawatan luka, injeksi, nebulizer, dan tindakan medis dasar.</p>
+</div>
+
+<div class="card">
+<h3>Surat Keterangan</h3>
+<p>Surat sehat, surat sakit, dan pemeriksaan administrasi.</p>
+</div>
+
+</div>
+</section>
+
+<section id="jadwal">
+
+<div class="section-title">
+<h2>Jadwal Pelayanan</h2>
+</div>
+
+<div class="box">
+
+<table>
+<tr>
+<th>Hari</th>
+<th>Jam Operasional</th>
+</tr>
+
+<tr>
+<td>Senin - Jumat</td>
+<td>08.00 - 20.00 WIB</td>
+</tr>
+
+<tr>
+<td>Sabtu</td>
+<td>08.00 - 15.00 WIB</td>
+</tr>
+
+<tr>
+<td>Minggu</td>
+<td>Tutup</td>
+</tr>
+
+</table>
+
+</div>
+
+</section>
+
+<section id="kontak">
+
+<div class="section-title">
+<h2>Kontak Kami</h2>
+</div>
+
+<div class="info-grid">
+
+<div class="box">
+
+<h3>Informasi Klinik</h3>
+<br>
+
+<div class="contact-item">
+📍 Jl. Contoh No. 123, Magetan, Jawa Timur
+</div>
+
+<div class="contact-item">
+📞 0812-3456-7890
+</div>
+
+<div class="contact-item">
+✉️ klinik@email.com
+</div>
+
+<div class="contact-item">
+🕒 Senin–Sabtu
+</div>
+
+<br>
+
+<a href="https://wa.me/6281234567890" class="btn btn-wa">
+Daftar via WhatsApp
+</a>
+
+</div>
+
+<div class="box">
+
+<h3>Lokasi Klinik</h3>
+<br>
+
+<iframe
+src="https://maps.google.com/maps?q=Magetan&t=&z=13&ie=UTF8&iwloc=&output=embed"
+width="100%"
+height="300"
+style="border:0;border-radius:10px;">
+</iframe>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+<p>
+© 2026 Klinik Pratama Sehat Keluarga
+<br>
+Pelayanan Kesehatan Profesional untuk Keluarga Indonesia
+</p>
+</footer>
+
+</body>
+</html>
