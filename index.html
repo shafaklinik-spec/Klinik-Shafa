@@ -3,576 +3,555 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Klinik Shafa</title>
-<meta name="description" content="Klinik Shafa — pelayanan kesehatan keluarga: dokter umum, imunisasi, laboratorium, dan medical check up.">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
+
 :root{
-    --bg:#f8fbff; /* very light blue/white */
+    --primary:#10b981;
+    --primary-dark:#047857;
+    --bg:#eef8f2;
     --card:#ffffff;
-    --primary:#0d6efd; /* blue */
-    --accent:#66b2ff; /* light blue accent */
-    --muted:#6b7b86;
-    --nav-bg:#ffffff;
-    --footer-bg:#f6f9ff;
-    --text:#07263b; /* dark navy for text */
-    --glass: rgba(14,71,146,0.06);
+    --text:#0f172a;
+    --muted:#64748b;
 }
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
-    color:var(--text);
+    font-family:'Inter',sans-serif;
 }
 
 body{
-    background:var(--bg);
+    background:#f8fafc;
     color:var(--text);
-    -webkit-font-smoothing:antialiased;
 }
 
-/* Skip link */
-/* Hide sections visually by default; show with fade/slide when .visible added */
-main > section{
-    display:block;
-    max-height:0;
-    opacity:0;
-    overflow:hidden;
-    transform:translateY(8px);
-    transition: max-height 320ms ease, opacity 220ms ease, transform 220ms ease;
-}
-main > section.visible{
-    max-height:2000px; /* large enough to reveal content */
-    opacity:1;
-    transform:none;
-}
-.skip{
-    position:absolute;
-    left:-999px;
-    top:auto;
-    background:var(--card);
-    color:var(--primary);
-    padding:8px 12px;
-    border-radius:4px;
-    z-index:1000;
-    box-shadow:0 4px 12px rgba(7,38,59,0.06);
-}
-.skip:focus{
-    left:10px;
-    top:10px;
-    box-shadow:0 2px 8px rgba(0,0,0,0.15);
+html{scroll-behavior:smooth;}
+
+.container{
+    width:min(1200px,92%);
+    margin:auto;
 }
 
-/* Button link */
-.btn{
-    display:inline-block;
-    padding:12px 25px;
-    background:#25D366;
-    color:white;
-    text-decoration:none;
-    border-radius:5px;
-}
-.btn:focus{
-    outline:3px solid rgba(37,211,102,0.35);
-}
-
-/* Focus styles for keyboard users */
-a:focus{ outline:3px solid rgba(13,110,253,0.25); }
+/* HEADER */
 
 header{
-    background:var(--nav-bg);
-    color:var(--text);
-    text-align:center;
-    padding:36px 20px;
-    border-bottom:1px solid #e9ecef;
-    position:fixed;
+    background:#fff;
+    box-shadow:0 3px 20px rgba(0,0,0,.05);
+    position:sticky;
     top:0;
-    left:0;
-    right:0;
     z-index:1000;
 }
 
-header h1{
-    font-size:2rem;
-    margin-bottom:6px;
-    font-weight:700;
-    color:var(--primary);
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 0;
 }
 
-header p{
-    font-size:0.95rem;
-    color:var(--muted);
+.logo{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.logo-icon{
+    width:52px;
+    height:52px;
+    border-radius:15px;
+    background:var(--primary);
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:24px;
+    font-weight:800;
+}
+
+.logo-img{
+    width:52px;
+    height:52px;
+    border-radius:15px;
+    object-fit:cover;
+    display:block;
+}
+
+.logo h1{
+    font-size:2rem;
+    color:#065f46;
+}
+
+.logo p{
+    font-size:12px;
+    color:#94a3b8;
+    font-weight:600;
 }
 
 nav{
-    background:var(--nav-bg);
-    padding:12px 20px;
-    text-align:center;
-    box-shadow:0 6px 18px rgba(15,23,42,0.04);
-    position:fixed;
-    left:0;
-    right:0;
-    /* top will be set by JS to match header height */
-    z-index:999;
+    display:flex;
+    gap:18px;
+    align-items:center;
+    white-space:nowrap;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
 }
+
+nav::-webkit-scrollbar{display:none;}
 
 nav a{
-    color:var(--muted);
     text-decoration:none;
-    margin:0 18px;
+    color:#334155;
+    padding:12px 20px;
+    border-radius:999px;
     font-weight:600;
-    padding:8px 6px;
+    transition:.3s;
 }
 
-section{
-    max-width:1100px;
-    margin:28px auto;
-    padding:32px 20px;
-    background:transparent;
+nav a:hover{
+    background:#ecfdf5;
 }
 
-/* Hide sections by default; show when .visible added */
-main > section{ display:none; }
-main > section.visible{ display:block; }
-main > section{ transition:opacity 180ms ease-in-out; }
-
-h2{
-    color:var(--primary);
-    margin-bottom:16px;
-    font-size:1.4rem;
-}
-
-.layanan{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:18px;
-}
-
-.card{
-    background:var(--card);
-    padding:20px;
-    border-radius:10px;
-    border:1px solid rgba(14,71,146,0.06);
-    box-shadow:0 8px 24px rgba(13,71,146,0.04);
-}
-
-/* Service card description overlay */
-.card{ position:relative; }
-.card .short{ margin:0; color:var(--muted); }
-.card .desc{
-    max-height:0;
-    opacity:0;
-    overflow:hidden;
-    transition: max-height 320ms ease, opacity 220ms ease, padding 220ms ease;
-    padding:0 0 0 0;
-    font-size:0.95rem;
-    line-height:1.6;
-    color:var(--text);
-    border-top:0 solid transparent;
-}
-.card:focus-within .desc,
-.card:hover .desc{
-    max-height:480px; /* enough for description */
-    opacity:1;
-    padding:12px 0 0 0;
-    border-top:1px solid var(--glass);
-}
-
-/* (Removed modal and 'Baca Selengkapnya' styles) */
-
-.card h3{
-    margin-bottom:8px;
-    color:var(--primary);
-    font-size:1.05rem;
-}
-
-.jadwal{
-    width:100%;
-    border-collapse:collapse;
-    background:var(--card);
-    border:1px solid rgba(14,71,146,0.06);
-}
-
-/* Doctor cards layout */
-.dokter-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:16px;
-    margin-top:12px;
-}
-.doc-card{
-    background:var(--card);
-    border:1px solid rgba(14,71,146,0.06);
-    border-radius:10px;
-    padding:16px;
-    box-shadow:0 8px 20px rgba(7,38,59,0.04);
-    transition: transform 220ms ease, box-shadow 220ms ease;
-    will-change: transform;
-}
-.doc-card{
-    background:var(--card);
-    border:1px solid rgba(14,71,146,0.06);
-    border-radius:10px;
-    padding:16px;
-    box-shadow:0 8px 20px rgba(7,38,59,0.04);
-    transition: transform 220ms ease, box-shadow 220ms ease;
-    will-change: transform;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    text-align:center;
-}
-.doc-card .meta{ display:flex; align-items:center; gap:12px; justify-content:center; flex-wrap:wrap; }
-.doc-card .meta > div{ text-align:center; }
-.doc-photo{ width:72px; height:72px; border-radius:50%; object-fit:cover; border:1px solid rgba(14,71,146,0.08); }
-.doc-card h4{ margin:0 0 6px 0; color:var(--primary); font-size:1.05rem; }
-.doc-card p{ margin:0; color:var(--muted); }
-.doc-times{ margin-top:10px; color:var(--text); font-weight:600; text-align:center; }
-.doc-card h4{ margin:0 0 6px 0; color:var(--primary); font-size:1.05rem; }
-.doc-card p{ margin:0; color:var(--muted); }
-.doc-times{ margin-top:10px; color:var(--text); font-weight:600; }
-
-/* Hover / focus expansion for doctor cards */
-.doc-card .doc-extra{
-    max-height:0;
-    overflow:hidden;
-    opacity:0;
-    transition: max-height 320ms ease, opacity 220ms ease, padding 220ms ease;
-    padding-top:0;
-    font-size:0.95rem;
-    color:var(--muted);
-}
-
-.doc-card:focus-within,
-.doc-card:hover{
-    transform: translateY(-6px);
-    box-shadow: 0 18px 40px rgba(7,38,59,0.10);
-}
-
-.doc-card:focus-within .doc-extra,
-.doc-card:hover .doc-extra{
-    max-height:220px;
-    opacity:1;
-    padding-top:8px;
-}
-
-.jadwal th,
-.jadwal td{
-    border:1px solid #ddd;
-    padding:12px;
-    text-align:center;
-}
-
-.jadwal th{
-    background:var(--accent);
+nav a.active{
+    background:var(--primary);
     color:white;
 }
 
-.kontak{
-    background:var(--card);
-    padding:20px;
-    border-radius:10px;
-    border:1px solid rgba(11,94,52,0.06);
-}
+/* HERO */
 
-footer{
-    background:var(--footer-bg);
-    color:var(--muted);
+.hero{
+    background:linear-gradient(135deg,#10b981,#34d399);
+    color:white;
+    padding:80px 30px;
+    border-radius:30px;
+    margin:40px auto;
     text-align:center;
-    padding:22px;
-    border-top:1px solid #e9ecef;
 }
 
-/* Utilities */
-.note{ margin-bottom:12px; font-weight:700; color:var(--primary); }
-.subheading{ margin-top:24px; color:var(--accent); }
-/* Button: primary */
+.hero h2{
+    font-size:3rem;
+    margin-bottom:15px;
+}
+
+.hero p{
+    max-width:700px;
+    margin:auto;
+    line-height:1.7;
+}
+
+/* FLOW */
+
+.flow-section{
+    background:var(--bg);
+    padding:50px;
+    border-radius:30px;
+}
+
+.section-title{
+    font-size:2rem;
+    margin-bottom:10px;
+}
+
+.section-sub{
+    color:var(--muted);
+    margin-bottom:35px;
+}
+
+.flow-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:22px;
+}
+
+.flow-card{
+    background:white;
+    padding:28px;
+    border-radius:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,.05);
+    transition:.3s;
+}
+
+.flow-card:hover{
+    transform:translateY(-5px);
+}
+
+.step{
+    width:44px;
+    height:44px;
+    border-radius:50%;
+    background:var(--primary);
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:700;
+    margin-bottom:20px;
+}
+
+.flow-card h3{
+    margin-bottom:12px;
+}
+
+.flow-card p{
+    color:var(--muted);
+    line-height:1.6;
+}
+
+/* LAYANAN */
+
+.services{
+    margin-top:50px;
+}
+
+.service-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.service-card{
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,.05);
+}
+
+.service-card h3{
+    color:var(--primary-dark);
+    margin-bottom:10px;
+}
+
+.service-card p{
+    color:var(--muted);
+}
+
+/* DOKTER */
+
+.doctors{
+    margin-top:60px;
+}
+
+.doctor-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+}
+
+.doctor{
+    background:white;
+    border-radius:20px;
+    padding:25px;
+    box-shadow:0 5px 20px rgba(0,0,0,.05);
+    text-align:center;
+}
+
+.avatar{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    background:#d1fae5;
+    margin:auto;
+    margin-bottom:15px;
+}
+
+.doctor h3{
+    color:var(--primary-dark);
+    margin-bottom:8px;
+}
+
+.schedule{
+    color:var(--muted);
+    margin-top:10px;
+}
+
+/* KONTAK */
+
+.contact{
+    margin-top:60px;
+    background:white;
+    padding:40px;
+    border-radius:25px;
+    box-shadow:0 5px 20px rgba(0,0,0,.05);
+}
+
+.contact p{
+    margin-bottom:12px;
+}
+
 .btn{
     display:inline-block;
-    padding:10px 20px;
-    background:var(--accent);
+    background:var(--primary);
     color:white;
     text-decoration:none;
-    border-radius:8px;
-    box-shadow:0 8px 24px rgba(13,71,146,0.08);
-    font-weight:600;
+    padding:14px 24px;
+    border-radius:999px;
+    margin-top:15px;
 }
-.btn:focus{ outline:3px solid rgba(13,71,146,0.18); }
-/* Close button for sections */
-.close-btn{
-    position:absolute;
-    right:18px;
-    top:18px;
-    background:transparent;
-    border:none;
-    font-size:1.5rem;
-    color:#333;
-    cursor:pointer;
-    padding:6px;
-}
-.close-btn:focus{ outline:3px solid rgba(13,71,146,0.18); border-radius:4px; }
-.section-wrap{ position:relative; }
-</style>
 
+/* FOOTER */
+
+footer{
+    margin-top:60px;
+    text-align:center;
+    padding:30px;
+    color:var(--muted);
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+.flow-grid{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.hero h2{
+    font-size:2.2rem;
+}
+
+}
+
+@media(max-width:600px){
+
+.topbar{
+    flex-direction:column;
+    gap:20px;
+}
+
+.flow-grid{
+    grid-template-columns:1fr;
+}
+
+.hero h2{
+    font-size:1.8rem;
+}
+
+.flow-section{
+    padding:25px;
+}
+
+}
+
+</style>
 </head>
+
 <body>
 
-    <a href="#content" class="skip">Lewati ke konten</a>
-
 <header>
-    <h1>Klinik Shafa</h1>
-    <p>Senyum, Salam, Sapa, Sentuh InshaAllah Sembuh </p>
-</header>
 
-<nav aria-label="Navigasi utama">
-    <a href="#tentang">Tentang</a>
-    <a href="#layanan">Layanan</a>
-    <a href="#jadwal">Jadwal</a>
-    <a href="#kontak">Kontak</a>
+<div class="container topbar">
+
+<div class="logo">
+<div class="logo-icon"><img src="images/logo.jpg" alt="Klinik Shafa" class="logo-img"></div>
+
+<div>
+<h1>Klinik Shafa</h1>
+<p>Melayani BPJS Kesehatan</p>
+</div>
+</div>
+
+<nav aria-label="Main navigation">
+<a href="#beranda" class="active">Beranda</a>
+<a href="#dokter">Jadwal Dokter</a>
+<a href="#layanan">Layanan</a>
+<a href="#kontak">Tentang Klinik</a>
 </nav>
 
-<main id="content">
-<section id="tentang" class="section-wrap">
-    <button class="close-btn" aria-label="Tutup">✕</button>
-    <h2>Tentang Kami</h2>
-    <p>
-        Klinik Shafa menyediakan pelayanan kesehatan umum,
-        pemeriksaan kesehatan, konsultasi dokter, dan pelayanan medis lainnya.
-    </p>
+</div>
+
+</header>
+
+<div class="container">
+
+<section class="hero" id="beranda">
+
+<h2>Klinik Shafa</h2>
+
+<p>
+Senyum, Salam, Sapa, Sentuh InshaAllah Sembuh.
+Pelayanan kesehatan keluarga dengan tenaga medis profesional,
+ramah, cepat, dan terpercaya.
+</p>
+
 </section>
 
-<section id="layanan" class="section-wrap">
-    <button class="close-btn" aria-label="Tutup">✕</button>
-    <h2>Layanan Kami</h2>
-    <p class="note"><strong>Melayani BPJS</strong></p>
+<section class="flow-section">
 
-    <div class="layanan">
-        <div class="card" tabindex="0">
-            <h3>IGD 24 Jam</h3>
-            <p class="short">Pelayanan gawat darurat setiap hari selama 24 jam.</p>
-            <div class="desc">IGD 24 jam memberikan penanganan gawat darurat sejak kedatangan: triase cepat, stabilisasi, tindakan resusitasi, dan manajemen luka atau nyeri akut. Tim medis siap melakukan pemeriksaan laboratorium cepat, imaging sederhana, dan tindakan darurat sebelum merujuk atau merawat inap. Layanan ini beroperasi non-stop untuk memastikan pasien mendapatkan penanganan pertama yang tepat dan cepat.</div>
-        </div>
+<h2 class="section-title">
+✓ Alur Pelayanan Pasien
+</h2>
 
-        <div class="card" tabindex="0">
-            <h3>Rawat Jalan</h3>
-            <p class="short">Pelayanan konsultasi dan perawatan tanpa rawat inap.</p>
-            <div class="desc">Rawat jalan menyediakan konsultasi medis rutin, diagnosis, penanganan penyakit ringan, serta penatalaksanaan lanjutan tanpa perlu menginap. Termasuk pemeriksaan, resep obat, tindakan kecil seperti jahit luka atau pemasangan infus sederhana, serta rujukan bila diperlukan. Ideal untuk pemeriksaan awal, kontrol penyakit kronis, dan tindak lanjut pasca perawatan.</div>
-        </div>
+<p class="section-sub">
+Sistematis dan ramah. Berikut langkah praktis yang dialami pasien dari pendaftaran hingga membawa pulang obat.
+</p>
 
-        <div class="card" tabindex="0">
-            <h3>Rawat Inap</h3>
-            <p class="short">Fasilitas perawatan dan observasi pasien inap.</p>
-            <div class="desc">Rawat inap menawarkan pengawasan medis intensif, perawatan lanjutan pasca-operasi, dan manajemen kondisi yang memerlukan observasi terus-menerus. Fasilitas mencakup kamar pasien, penanganan keperawatan 24 jam, pengaturan obat yang terkontrol, serta koordinasi dengan spesialis untuk perawatan komprehensif dan rencana pemulihan.</div>
-        </div>
+<div class="flow-grid">
 
-        <div class="card" tabindex="0">
-            <h3>Persalinan</h3>
-            <p class="short">Pelayanan bersalin dan penanganan kehamilan.</p>
-            <div class="desc">Layanan persalinan mencakup perawatan antenatal, dukungan persalinan normal, serta penanganan komplikasi kehamilan oleh tenaga kesehatan terlatih. Tim akan memberikan monitoring janin, manajemen nyeri, tindakan persalinan aman, serta perawatan pasca persalinan untuk ibu dan bayi. Fokus pada keselamatan dan pengalaman kelahiran yang terlindungi.</div>
-        </div>
+<div class="flow-card">
+<div class="step">1</div>
+<h3>Pendaftaran Online / Fisik</h3>
+<p>Pasien BPJS wajib melakukan pendaftaran online via aplikasi mJKN.</p>
+</div>
 
-        <div class="card" tabindex="0">
-            <h3>KB</h3>
-            <p class="short">Pelayanan kontrasepsi dan konsultasi reproduksi.</p>
-            <div class="desc">Pelayanan KB memberikan konseling pilihan kontrasepsi, pemasangan dan pelepasan alat kontrasepsi (IUD/implan), serta pemantauan efek samping. Tim memberikan informasi yang jelas sesuai kebutuhan pasangan, perencanaan keluarga, serta tindakan pencegahan dan rujukan bila terdapat komplikasi atau kebutuhan medis khusus.</div>
-        </div>
+<div class="flow-card">
+<div class="step">2</div>
+<h3>Pemeriksaan Tanda Vital</h3>
+<p>Pemeriksaan tekanan darah, nadi, suhu tubuh, dan berat badan.</p>
+</div>
 
-        <div class="card" tabindex="0">
-            <h3>Laboratorium</h3>
-            <p class="short">Pemeriksaan darah, urine, dan tes laboratorium lainnya.</p>
-            <div class="desc">Laboratorium klinik menyediakan pemeriksaan darah lengkap, analisa urine, pemeriksaan fungsi organ, dan tes cepat untuk penegakan diagnosis. Hasil disajikan dengan akurasi dan kecepatan untuk mendukung keputusan medis, termasuk pra-operasi, skrining, dan monitoring terapi.</div>
-        </div>
+<div class="flow-card">
+<div class="step">3</div>
+<h3>Diagnosis & Konsultasi</h3>
+<p>Pemeriksaan dokter untuk menegakkan diagnosis dan menentukan terapi.</p>
+</div>
 
-        <div class="card" tabindex="0">
-            <h3>EKG</h3>
-            <p class="short">Pemeriksaan elektrokardiogram untuk evaluasi fungsi jantung.</p>
-            <div class="desc">Pemeriksaan EKG (elektrokardiogram) merekam aktivitas listrik jantung untuk mendeteksi aritmia, iskemia, atau kelainan konduksi. Prosedur non-invasif ini cepat dan membantu dokter menilai kondisi jantung serta menentukan langkah pemeriksaan atau rujukan lebih lanjut jika diperlukan.</div>
-        </div>
+<div class="flow-card">
+<div class="step">4</div>
+<h3>Apotek & KIE</h3>
+<p>Pengambilan resep dan edukasi penggunaan obat kepada pasien.</p>
+</div>
 
-        <div class="card" tabindex="0">
-            <h3>Fisioterapi</h3>
-            <p class="short">Terapi fisik untuk pemulihan cedera dan rehabilitasi.</p>
-            <div class="desc">Fisioterapi menawarkan program rehabilitasi individual: latihan terapeutik, terapi manual, dan teknik pengurangan nyeri untuk memulihkan fungsi setelah cedera, operasi, atau gangguan kronis. Terapi disesuaikan untuk mempercepat pemulihan dan meningkatkan kualitas hidup pasien.</div>
-        </div>
+</div>
 
-        <div class="card" tabindex="0">
-            <h3>Poli Gigi</h3>
-            <p class="short">Perawatan gigi dasar dan konsultasi gigi.</p>
-            <div class="desc">Poli gigi menyediakan pemeriksaan gigi dan mulut, pembersihan, penambalan, pencabutan gigi sederhana, dan edukasi kebersihan mulut. Layanan fokus pada pencegahan, deteksi dini masalah gigi, dan tindakan konservatif untuk menjaga kesehatan mulut pasien.</div>
-        </div>
-    </div>
 </section>
 
-<section id="jadwal" class="section-wrap">
-    <button class="close-btn" aria-label="Tutup">✕</button>
- 
+<section class="services" id="layanan">
 
-    <h3 class="subheading">Jadwal Dokter</h3>
-    <div class="dokter-grid" aria-label="Jadwal dokter">
-        <article class="doc-card" aria-labelledby="doc-hanny" tabindex="0">
-            <div class="meta">
-                <img class="doc-photo" src="images/hanny.jpg" alt="Foto dr. Hanny Dita Lutfi">
-                <div>
-                    <h4 id="doc-hanny">dr. Hanny Dita Lutfi</h4>
-                    <p>Spesialis: Dokter Umum</p>
-                </div>
-            </div>
-            <p class="doc-times">Senin – Rabu<br>08:00 – 12:00 (pagi)<br>16:00 – 20:00 (sore)</p>
-            <div class="doc-extra">dr. Hanny berfokus pada pelayanan primer dan manajemen penyakit umum. Berpengalaman dalam skrining kesehatan, terapi penyakit infeksi ringan, dan pemantauan penyakit kronis. Untuk reservasi atau konsultasi, silakan hubungi meja registrasi klinik.</div>
-        </article>
+<h2 class="section-title">Layanan Unit Poliklinik</h2>
 
-        <article class="doc-card" aria-labelledby="doc-masyola" tabindex="0">
-            <div class="meta">
-                <img class="doc-photo" src="images/masyola.jpg" alt="Foto dr. Masyola Gusta Alim">
-                <div>
-                    <h4 id="doc-masyola">dr. Masyola Gusta Alim</h4>
-                    <p>Spesialis: Dokter Umum</p>
-                </div>
-            </div>
-            <p class="doc-times">Kamis – Sabtu<br>08:00 – 12:00 (pagi)<br>16:00 – 20:00 (sore)</p>
-            <div class="doc-extra">dr. Masyola menangani konsultasi umum, penatalaksanaan penyakit akut dan kronis, serta tindakan medis kecil. Memiliki pendekatan komunikatif untuk edukasi pasien mengenai pencegahan dan pengobatan. Pasien disarankan membuat janji untuk mengurangi waktu tunggu.</div>
-        </article>
+<br>
 
-        <article class="doc-card" aria-labelledby="doc-sheila" tabindex="0">
-            <div class="meta">
-                <img class="doc-photo" src="images/sheila.jpg" alt="Foto dr. Sheila">
-                <div>
-                    <h4 id="doc-sheila">dr. Sheila</h4>
-                    <p>Spesialis: Dokter Umum</p>
-                </div>
-            </div>
-            <p class="doc-times">Minggu<br>16:00 – 20:00 (sore)</p>
-            <div class="doc-extra">dr. Sheila menyediakan konsultasi sore dan fokus pada pemeriksaan fisik komprehensif, vaksinasi, dan tindak medis dasar. Ramah anak dan keluarga, serta siap memberikan rujukan bila perlu. Silakan datang lebih awal untuk pendaftaran.</div>
-        </article>
-    </div>
+<div class="service-grid">
+
+<div class="service-card">
+<h3>IGD 24 Jam</h3>
+<p>Pelayanan gawat darurat selama 24 jam.</p>
+</div>
+
+<div class="service-card">
+<h3>Rawat Jalan</h3>
+<p>Konsultasi dan pemeriksaan dokter umum.</p>
+</div>
+
+<div class="service-card">
+<h3>Rawat Inap</h3>
+<p>Perawatan dan observasi pasien.</p>
+</div>
+
+<div class="service-card">
+<h3>Persalinan</h3>
+<p>Pelayanan ibu hamil dan persalinan.</p>
+</div>
+
+<div class="service-card">
+<h3>Laboratorium</h3>
+<p>Pemeriksaan darah, urine, dan lainnya.</p>
+</div>
+
+<div class="service-card">
+<h3>Poli Gigi</h3>
+<p>Pelayanan kesehatan gigi dan mulut.</p>
+</div>
+
+<div class="service-card">
+<h3>KB (Keluarga Berencana)</h3>
+<p>Pelayanan konseling dan Suntik KB.</p>
+</div>
+
+<div class="service-card">
+<h3>EKG</h3>
+<p>Pemeriksaan elektrokardiogram untuk evaluasi jantung.</p>
+</div>
+
+<div class="service-card">
+<h3>Fisioterapi</h3>
+<p>Terapi fisik untuk pemulihan dan rehabilitasi.</p>
+</div>
+
+</div>
+
 </section>
 
-<section id="kontak" class="section-wrap">
-    <button class="close-btn" aria-label="Tutup">✕</button>
-    <h2>Kontak</h2>
+<section class="doctors" id="dokter">
 
-    <div class="kontak">
-        <p><strong>Alamat:</strong> Balegondo, Trosono Kecamatan Parang</p>
-        <p><strong>Telepon:</strong> 085257119666</p>
-        <p><strong>Email:</strong> info@kliniksehat.com</p>
-        <a class="btn" href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" aria-label="Chat via WhatsApp">
-            Chat WhatsApp
-        </a>
-    </div>
+<h2 class="section-title">Jadwal Dokter</h2>
+
+<br>
+
+<div class="doctor-grid">
+
+<div class="doctor">
+<div class="avatar"></div>
+<h3>dr. Hanny Dita Lutfi</h3>
+<p>Dokter Umum</p>
+<div class="schedule">
+Senin–Rabu<br>
+Pagi: 08.00–12.00<br>
+Sore: 16.00–20.00
+</div>
+</div>
+
+<div class="doctor">
+<div class="avatar"></div>
+<h3>dr. Masyola Gusta Alim</h3>
+<p>Dokter Umum</p>
+<div class="schedule">
+Kamis–Sabtu<br>
+Pagi: 08.00–12.00<br>
+Sore: 16.00–20.00
+</div>
+</div>
+
+<div class="doctor">
+<div class="avatar"></div>
+<h3>dr. Sheila</h3>
+<p>Dokter Umum</p>
+<div class="schedule">
+Minggu<br>
+16.00–20.00
+</div>
+</div>
+
+<div class="doctor">
+<div class="avatar"></div>
+<h3>drg. Novi</h3>
+<p>Dokter Gigi</p>
+<div class="schedule">
+Senin &amp; Kamis<br>
+08.00–12.00
+</div>
+</div>
+
+</div>
+
 </section>
-</main>
+
+<section class="contact" id="kontak">
+
+<h2 class="section-title">Informasi Klinik</h2>
+
+<br>
+
+<p><b>Alamat:</b> Balegondo, Trosono, Kecamatan Parang</p>
+<p><b>Telepon:</b> 085257119666</p>
+<p><b>Email:</b> info@klinikshafa.com</p>
+
+<a href="https://wa.me/6285257119666" class="btn">
+Chat WhatsApp
+</a>
+
+</section>
+
+</div>
 
 <footer>
-    <p>© 2026 Klinik Shafa. Semua Hak Dilindungi.</p>
+© 2026 Klinik Shafa. Semua Hak Dilindungi.
 </footer>
-
-<!-- (Removed modal markup) -->
 
 </body>
 </html>
-
-<script>
-// Show sections on navbar hover or click. Click makes the section "active" (persistent).
-(() => {
-    const nav = document.querySelector('nav');
-    const links = Array.from(document.querySelectorAll('nav a'));
-    const sections = Array.from(document.querySelectorAll('main > section'));
-    let activeId = null;
-
-    // Ensure nav sits directly below header (header height may change responsively)
-    function updateNavTop(){
-        const header = document.querySelector('header');
-        const main = document.querySelector('main');
-        if (!header || !nav || !main) return;
-        const headerH = header.getBoundingClientRect().height;
-        nav.style.top = Math.ceil(headerH) + 'px';
-        // ensure main content starts below header+nav
-        // compute nav height after it's positioned
-        const navH = nav.getBoundingClientRect().height;
-        main.style.paddingTop = Math.ceil(headerH + navH) + 'px';
-    }
-    window.addEventListener('resize', updateNavTop);
-    window.addEventListener('orientationchange', updateNavTop);
-    // call once to initialize after layout
-    setTimeout(updateNavTop, 50);
-
-    function hideAll() {
-        sections.forEach(s => {
-            s.classList.remove('visible');
-            s.setAttribute('aria-hidden', 'true');
-        });
-    }
-
-    function show(id) {
-        hideAll();
-        const el = document.getElementById(id);
-        if (el) {
-            el.classList.add('visible');
-            el.setAttribute('aria-hidden', 'false');
-        }
-    }
-
-    links.forEach(link => {
-        const target = (link.getAttribute('href') || '').replace('#','');
-
-        link.addEventListener('mouseenter', () => {
-            show(target);
-        });
-
-        link.addEventListener('focus', () => {
-            show(target);
-        });
-
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            // toggle active on click
-            if (activeId === target) {
-                activeId = null;
-                hideAll();
-                links.forEach(l => l.classList.remove('active'));
-            } else {
-                activeId = target;
-                show(target);
-                links.forEach(l => l.classList.toggle('active', (l.getAttribute('href')||'').replace('#','') === target));
-            }
-        });
-    });
-
-    // when leaving nav, if there's an active keep it visible, otherwise hide
-    nav.addEventListener('mouseleave', () => {
-        if (activeId) show(activeId);
-        else hideAll();
-    });
-
-    // click outside closes non-active view
-    document.addEventListener('click', (e) => {
-        if (!nav.contains(e.target) && !document.querySelector('main').contains(e.target)) {
-            if (!activeId) hideAll();
-        }
-    });
-
-    // close buttons inside sections
-    const closeButtons = Array.from(document.querySelectorAll('.close-btn'));
-    closeButtons.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            hideAll();
-            activeId = null;
-            links.forEach(l => l.classList.remove('active'));
-            // move focus back to nav for accessibility
-            const firstNav = links[0];
-            if (firstNav) firstNav.focus();
-        });
-    });
-
-    // initialize: show 'layanan' by default and mark nav active
-    hideAll();
-    const defaultSection = 'layanan';
-    activeId = defaultSection;
-    show(defaultSection);
-    links.forEach(l => l.classList.toggle('active', (l.getAttribute('href')||'').replace('#','') === defaultSection));
-})();
-// (Removed modal behavior)
-</script>
